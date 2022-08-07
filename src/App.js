@@ -4,7 +4,7 @@ import rain from './videos/rain.mp4'
 import clouds from './videos/clouds.mp4'
 
 function App() {
-  const [video, setVideo] = useState(clouds);
+  const [video, setVideo] = useState('');
   const changeBackgroundVideo = (video) => {
     switch (video) {
       case clouds:
@@ -14,7 +14,8 @@ function App() {
         setVideo(clouds)
         break;
       default:
-        console.log(`video is not available`);
+        setVideo(clouds)
+        break;
     }
   }
 
@@ -22,7 +23,15 @@ function App() {
     <div className="App">
       <div className='default-background'></div>
       <div className='rainVideo'><video src={video} autoPlay loop muted /></div>
-      <button onClick={() => changeBackgroundVideo(video)}>knopka</button>
+      <button className='button-test' onClick={() => changeBackgroundVideo(video)}>knopka</button>
+
+      <div className="box">
+        <form className='base-form'>
+          <input type="text" placeholder='Название города' className='input-town' />
+          <button type="submit" className='button-submit'>Узнать погоду</button>
+        </form>
+      </div>
+
     </div>
   );
 }
