@@ -2,9 +2,16 @@ import './App.css'
 import React, { useState } from "react";
 import rain from './videos/rain.mp4'
 import clouds from './videos/clouds.mp4'
+import WeatherService from './API/WeatherService';
+import { useDispatch, useSelector } from 'react-redux'
+import { addCustomerAction } from './store/citiesReducer';
 
 function App() {
+  const dispatch = useDispatch()
   const [video, setVideo] = useState('');
+  const [inputText, setInputText] = useState('');
+  const cities = useSelector(state => state.cities)
+
   const changeBackgroundVideo = (video) => {
     switch (video) {
       case clouds:
@@ -19,6 +26,14 @@ function App() {
     }
   }
 
+  // WeatherService.getWeatherByName(setCities)
+
+  const ChangeCities = (text) => {
+    const rValue = new RegExp(text, 'i')
+    const newCities = ((cities.filter(city => rValue.test(city.name))))
+    console.log(newCities.slice(0, 10));
+  }
+
   return (
     <div className="App">
       <div className='default-background'></div>
@@ -27,8 +42,17 @@ function App() {
 
       <div className="box">
         <form className='base-form'>
-          <input type="text" placeholder='Название города' className='input-town' />
-          <button type="submit" className='button-submit'>Узнать погоду</button>
+          <input
+            placeholder='Название города'
+            className='input-town'
+            onChange={(e) => { ChangeCities(e.target.value) }}
+          />
+          <button
+            type="submit"
+            className='button-submit'
+          >
+            Узнать погоду
+          </button>
         </form>
       </div>
 
