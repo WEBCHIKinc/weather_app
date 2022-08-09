@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './App.css';
 import clouds from './videos/clouds.mp4';
 import rain from './videos/rain.mp4';
+import WeatherService from './API/WeatherService'
 
 function App() {
   const [video, setVideo] = useState('');
@@ -21,9 +22,11 @@ function App() {
     }
   }
 
-  // useEffect(() => {
-  //   WeatherService.getWeatherByName(inputText)
-  // }, [inputText])
+  const getWeather = (e) => {
+    e.preventDefault(); 
+    WeatherService.getWeatherByName(inputText)
+  }
+
 
   return (
     <div className="App">
@@ -42,6 +45,7 @@ function App() {
           <button
             type="submit"
             className='button-submit'
+            onClick={(e) => getWeather(e)}
           >
             Узнать погоду
           </button>
