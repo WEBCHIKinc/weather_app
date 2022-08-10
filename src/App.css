@@ -33,11 +33,11 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    width: 40%;
+    width: 35%;
     height: 50%;
     background-color: rgb(87, 87, 87);
     border-radius: 60px;
-
+    flex-direction: column;
 }
 
 .box:before {
@@ -71,33 +71,52 @@
 .base-form {
     position: absolute;
     display: flex;
+    align-items: center;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 
 .input-town {
+    position: absolute;
+    top: 43%;
     border: 5px solid #3e3e3e;
     border-radius: 30px;
-    width: 100%;
+    width: 50%;
     font-size: 30px;
     box-sizing: border-box;
-    display: inline-block;
-    margin-top: 110px;
     text-indent: 10px;
 }
 
+.input-town.on-info {
+    top: 75%;
+}
+
 .button-submit {
+    position: relative;
     font-size: 30px;
-    margin-top: 70px;
     border: 5px solid #ffffff;
     border-radius: 100px 10px 100px 10px;
-    width: 100%;
+    width: 22%;
     cursor: pointer;
     background-color: #3b3a3a;
     color: #ffffff;
+    top: 70%;
+    box-sizing: border-box;
 }
 
 .button-test {
     position: absolute;
     left: 0;
     top: 0;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 7%;
+
+
 }
