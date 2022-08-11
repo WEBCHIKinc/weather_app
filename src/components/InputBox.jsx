@@ -3,12 +3,12 @@ import WeatherService from '../API/WeatherService';
 import { changeCityNameAction } from '../store/weatherReducer';
 import { useSelector } from "react-redux";
 
-const InputBox = ({dispatch}) => {
+const InputBox = ({ dispatch }) => {
     const cityName = useSelector(state => state.cityName)
 
     const getWeather = (e) => {
         e.preventDefault();
-        WeatherService.getWeatherByName(cityName)
+        dispatch(WeatherService.getWeatherByName(cityName))
     }
 
     const changeCityName = (text) => {

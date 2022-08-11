@@ -117,6 +117,10 @@
     align-items: center;
     position: absolute;
     top: 7%;
+}
 
-
+.weather-data-header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
