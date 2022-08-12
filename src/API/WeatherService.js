@@ -16,7 +16,7 @@ export default class WeatherService {
                     console.log();
                 })
                 .catch((err) => {
-                    console.log(err);
+                    alert('Неверное название города');
                 })
         }
     }

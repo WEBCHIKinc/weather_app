@@ -19,7 +19,7 @@ const InputBox = ({ dispatch }) => {
         <div className="box">
             <form className='base-form'>
                 <input
-                    placeholder='Название города'
+                    placeholder='Город...'
                     className='input-town'
                     value={cityName}
                     onChange={(e) => { changeCityName(e.target.value) }}

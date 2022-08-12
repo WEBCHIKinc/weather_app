@@ -9,6 +9,7 @@ import clouds from './videos/clouds.mp4';
 function App() {
   const dispatch = useDispatch()
   const video = useSelector(state => state.video)
+  const weatherData = useSelector(state => state.weatherData)
 
   const changeBackgroundVideo = (video) => {
     dispatch(changeVideoAction(video))
@@ -20,11 +21,10 @@ function App() {
       <div className='rainVideo'><video src={video} autoPlay loop muted /></div>
       <button className='button-test' onClick={() => changeBackgroundVideo(clouds)}>knopka</button>
 
-      <InputBox dispatch={dispatch} />
-
-      {/* <DataBox dispatch={dispatch} /> */}
-
-
+      {weatherData
+        ? <DataBox dispatch={dispatch} />
+        : <InputBox dispatch={dispatch} />
+      }
     </div>
   );
 }

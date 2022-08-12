@@ -35,7 +35,7 @@
     position: absolute;
     width: 35%;
     height: 50%;
-    background-color: rgb(87, 87, 87);
+    background-color: rgba(87, 87, 87, 0.45);
     border-radius: 60px;
     flex-direction: column;
 }
