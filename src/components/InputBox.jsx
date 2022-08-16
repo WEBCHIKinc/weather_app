@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
+import { useSelector } from "react-redux";
 import WeatherService from '../API/WeatherService';
 import { changeCityNameAction } from '../store/weatherReducer';
-import { useSelector } from "react-redux";
 
 const InputBox = ({ dispatch }) => {
     const cityName = useSelector(state => state.cityName)
@@ -9,6 +9,7 @@ const InputBox = ({ dispatch }) => {
     const getWeather = (e) => {
         e.preventDefault();
         dispatch(WeatherService.getWeatherByName(cityName))
+        dispatch(changeCityNameAction(''))
     }
 
     const changeCityName = (text) => {
@@ -20,9 +21,10 @@ const InputBox = ({ dispatch }) => {
             <form className='base-form'>
                 <input
                     placeholder='Город...'
-                    className='input-town'
+                    className='input__town'
                     value={cityName}
                     onChange={(e) => { changeCityName(e.target.value) }}
+                    spellCheck={false}
                 />
                 <button
                     type="submit"

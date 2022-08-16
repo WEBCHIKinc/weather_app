@@ -3,23 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import './App.css';
 import DataBox from "./components/DataBox";
 import InputBox from "./components/InputBox";
-import { changeVideoAction } from "./store/weatherReducer";
-import clouds from './videos/clouds.mp4';
 
 function App() {
   const dispatch = useDispatch()
   const video = useSelector(state => state.video)
   const weatherData = useSelector(state => state.weatherData)
 
-  const changeBackgroundVideo = (video) => {
-    dispatch(changeVideoAction(video))
-  }
-
   return (
     <div className="App">
       <div className='default-background'></div>
-      <div className='rainVideo'><video src={video} autoPlay loop muted /></div>
-      <button className='button-test' onClick={() => changeBackgroundVideo(clouds)}>knopka</button>
+      <div className='video'><video src={video} autoPlay loop muted /></div>
 
       {weatherData
         ? <DataBox dispatch={dispatch} />

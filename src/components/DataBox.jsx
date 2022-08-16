@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import WeatherService from '../API/WeatherService';
 import { changeCityNameAction, changeVideoAction } from '../store/weatherReducer';
-import sunny from '../videos/clouds.mp4';
-import rain from '../videos/rain.mp4';
+import rain from '../videos/rain_seamless_loop.mp4';
+import sunny from '../videos/sky_seamless_loop.mp4';
 
 
 const DataBox = ({ dispatch }) => {
@@ -12,9 +12,6 @@ const DataBox = ({ dispatch }) => {
     const [weatherDescription, setWeatherDescription] = useState('');
     const [weatherCityName, setWeatherCityName] = useState('');
     const [weatherCityTemp, setWeatherCityTemp] = useState('');
-    const rValueRain = new RegExp('дождь', 'i')
-    const rValueSunny = new RegExp('ясно', 'i')
-
 
     const getWeather = () => {
         dispatch(WeatherService.getWeatherByName(cityName))
@@ -27,6 +24,7 @@ const DataBox = ({ dispatch }) => {
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
             getWeather()
+            dispatch(changeCityNameAction(''))
         }
     }
 
@@ -36,8 +34,17 @@ const DataBox = ({ dispatch }) => {
         setWeatherCityTemp(weatherData.main.temp)
 
         switch (weatherData.weather[0].description) {
-            case 'дождь' || 'небольшой дождь':
+            case 'дождь':
                 dispatch(changeVideoAction(rain))
+                break;
+            case 'небольшой дождь':
+                dispatch(changeVideoAction(rain))
+                break;
+            case 'ясно':
+                dispatch(changeVideoAction(sunny))
+                break;
+            case 'облачно':
+                dispatch(changeVideoAction(sunny))
                 break;
             default:
                 dispatch(changeVideoAction(sunny))
@@ -51,7 +58,7 @@ const DataBox = ({ dispatch }) => {
                 {weatherData
                     &&
                     <div className='weather-data-header'>
-                        <h1 style={{ fontSize: 45 }}>{weatherCityName}</h1>
+                        <h1 style={{ fontSize: 50 }}>{weatherCityName}</h1>
                         <h2>{weatherDescription}</h2>
                     </div>
                 }
@@ -65,9 +72,11 @@ const DataBox = ({ dispatch }) => {
 
             <input
                 placeholder='Город...'
-                className='input-town on-info'
+                className='input__town on__info'
+                value={cityName}
                 onChange={(e) => { changeCityName(e) }}
                 onKeyDown={handleKeyDown}
+                spellCheck='false'
             />
         </div>
     )
