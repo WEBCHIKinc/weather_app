@@ -2,39 +2,43 @@ import React from 'react';
 import { useSelector } from "react-redux";
 import WeatherService from '../API/WeatherService';
 import { changeCityNameAction } from '../store/weatherReducer';
+import MyCityInput from './UI/CityInput/MyCityInput';
+import MyButton from './UI/Button/MyButton';
+import MyForm from './UI/Form/MyForm';
+import MyBox from './UI/Box/MyBox';
 
 const InputBox = ({ dispatch }) => {
     const cityName = useSelector(state => state.cityName)
 
-    const getWeather = (e) => {
+    const handleGetWeatherClick = (e) => {
         e.preventDefault();
         dispatch(WeatherService.getWeatherByName(cityName))
         dispatch(changeCityNameAction(''))
     }
 
-    const changeCityName = (text) => {
-        dispatch(changeCityNameAction(text))
+    const handleCityNameChange = (e) => {
+        const { value } = e.target;
+        dispatch(changeCityNameAction(value));
     }
 
     return (
-        <div className="box">
-            <form className='base-form'>
-                <input
+        <MyBox>
+            <MyForm>
+                <MyCityInput
                     placeholder='Город...'
                     className='input__town'
                     value={cityName}
-                    onChange={(e) => { changeCityName(e.target.value) }}
+                    onChange={handleCityNameChange}
                     spellCheck={false}
                 />
-                <button
+                <MyButton
                     type="submit"
-                    className='button-submit'
-                    onClick={(e) => getWeather(e)}
+                    onClick={handleGetWeatherClick}
                 >
                     Ввод
-                </button>
-            </form>
-        </div>
+                </MyButton>
+            </MyForm>
+        </MyBox>
     )
 }
 

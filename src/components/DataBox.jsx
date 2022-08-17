@@ -4,6 +4,8 @@ import WeatherService from '../API/WeatherService';
 import { changeCityNameAction, changeVideoAction } from '../store/weatherReducer';
 import rain from '../videos/rain_seamless_loop.mp4';
 import sunny from '../videos/sky_seamless_loop.mp4';
+import MyCityInput from './UI/CityInput/MyCityInput';
+import MyBox from './UI/Box/MyBox';
 
 
 const DataBox = ({ dispatch }) => {
@@ -17,8 +19,9 @@ const DataBox = ({ dispatch }) => {
         dispatch(WeatherService.getWeatherByName(cityName))
     }
 
-    const changeCityName = (e) => {
-        dispatch(changeCityNameAction(e.target.value))
+    const handleCityNameChange = (e) => {
+        const { value } = e.target;
+        dispatch(changeCityNameAction(value));
     }
 
     const handleKeyDown = (e) => {
@@ -53,7 +56,7 @@ const DataBox = ({ dispatch }) => {
     }, [weatherData])
 
     return (
-        <div className="box">
+        <MyBox>
             <div className="title">
                 {weatherData
                     &&
@@ -70,15 +73,15 @@ const DataBox = ({ dispatch }) => {
                 </h1>
             </div>
 
-            <input
+            <MyCityInput
+                infoPage={true}
                 placeholder='Город...'
-                className='input__town on__info'
                 value={cityName}
-                onChange={(e) => { changeCityName(e) }}
+                onChange={handleCityNameChange}
                 onKeyDown={handleKeyDown}
                 spellCheck='false'
             />
-        </div>
+        </MyBox>
     )
 }
 
