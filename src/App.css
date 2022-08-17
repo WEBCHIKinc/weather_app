@@ -33,87 +33,6 @@ body {
     background-color: rgba(0, 0, 0, 0.34);
 }
 
-.box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    width: 35%;
-    height: 50%;
-    background-color: rgba(87, 87, 87, 0.45);
-    border-radius: 60px;
-    flex-direction: column;
-}
-
-.box:before {
-    content: "";
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(-45deg, #000000 0%, #ffffff 100%);
-    transform: translate3d(31px, 20px, 0) scale(0.95);
-    filter: blur(20px);
-    opacity: var(0.7);
-    transition: opacity 0.3s;
-    border-radius: inherit;
-}
-
-.box::after {
-    content: "";
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: inherit;
-    border-radius: inherit;
-}
-
-.base-form {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-}
-
-.input__town {
-    position: absolute;
-    top: 43%;
-    border: 5px solid #3e3e3e;
-    border-radius: 30px;
-    width: 50%;
-    font-size: 30px;
-    box-sizing: border-box;
-    text-indent: 10px;
-    color: #000000;
-    font-family: 'Rubik Distressed', cursive;
-}
-
-.input__town.on__info {
-    top: 75%;
-    animation: videoEnter 1s ease 0s 1 normal forwards;
-}
-
-.button-submit {
-    position: relative;
-    font-size: 26px;
-    border: 5px solid #ffffff;
-    border-radius: 100px 10px 100px 10px;
-    width: 22%;
-    cursor: pointer;
-    background-color: #3b3a3a;
-    color: #ffffff;
-    top: 70%;
-    box-sizing: border-box;
-    font-family: 'Rubik Distressed', cursive;
-}
-
 .button-test {
     position: absolute;
     left: 0;
@@ -132,20 +51,5 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    animation: videoEnter 3s ease 0s 1 normal forwards;
-}
 
-.weather-info-box {
-    animation: videoEnter 3s ease 0s 1 normal forwards;
-}
-
-
-@keyframes videoEnter {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
 }

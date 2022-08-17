@@ -2,6 +2,10 @@ import React from 'react';
 import { useSelector } from "react-redux";
 import WeatherService from '../API/WeatherService';
 import { changeCityNameAction } from '../store/weatherReducer';
+import MyCityInput from './UI/CityInput/MyCityInput';
+import MyButton from './UI/Button/MyButton';
+import MyForm from './UI/Form/MyForm';
+import MyBox from './UI/Box/MyBox';
 
 const InputBox = ({ dispatch }) => {
     const cityName = useSelector(state => state.cityName)
@@ -18,24 +22,23 @@ const InputBox = ({ dispatch }) => {
     }
 
     return (
-        <div className="box">
-            <form className='base-form'>
-                <input
+        <MyBox>
+            <MyForm>
+                <MyCityInput
                     placeholder='Город...'
                     className='input__town'
                     value={cityName}
                     onChange={handleCityNameChange}
                     spellCheck={false}
                 />
-                <button
+                <MyButton
                     type="submit"
-                    className='button-submit'
                     onClick={handleGetWeatherClick}
                 >
                     Ввод
-                </button>
-            </form>
-        </div>
+                </MyButton>
+            </MyForm>
+        </MyBox>
     )
 }
 

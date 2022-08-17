@@ -1,0 +1,13 @@
+.MyButton {
+    position: relative;
+    font-size: 26px;
+    border: 5px solid #ffffff;
+    border-radius: 100px 10px 100px 10px;
+    width: 22%;
+    cursor: pointer;
+    background-color: #3b3a3a;
+    color: #ffffff;
+    top: 70%;
+    box-sizing: border-box;
+    font-family: 'Rubik Distressed', cursive;
+}
