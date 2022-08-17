@@ -6,14 +6,15 @@ import { changeCityNameAction } from '../store/weatherReducer';
 const InputBox = ({ dispatch }) => {
     const cityName = useSelector(state => state.cityName)
 
-    const getWeather = (e) => {
+    const handleGetWeatherClick = (e) => {
         e.preventDefault();
         dispatch(WeatherService.getWeatherByName(cityName))
         dispatch(changeCityNameAction(''))
     }
 
-    const changeCityName = (text) => {
-        dispatch(changeCityNameAction(text))
+    const handleCityNameChange = (e) => {
+        const { value } = e.target;
+        dispatch(changeCityNameAction(value));
     }
 
     return (
@@ -23,13 +24,13 @@ const InputBox = ({ dispatch }) => {
                     placeholder='Город...'
                     className='input__town'
                     value={cityName}
-                    onChange={(e) => { changeCityName(e.target.value) }}
+                    onChange={handleCityNameChange}
                     spellCheck={false}
                 />
                 <button
                     type="submit"
                     className='button-submit'
-                    onClick={(e) => getWeather(e)}
+                    onClick={handleGetWeatherClick}
                 >
                     Ввод
                 </button>

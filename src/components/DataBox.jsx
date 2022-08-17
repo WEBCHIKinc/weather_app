@@ -17,8 +17,9 @@ const DataBox = ({ dispatch }) => {
         dispatch(WeatherService.getWeatherByName(cityName))
     }
 
-    const changeCityName = (e) => {
-        dispatch(changeCityNameAction(e.target.value))
+    const handleCityNameChange = (e) => {
+        const { value } = e.target;
+        dispatch(changeCityNameAction(value));
     }
 
     const handleKeyDown = (e) => {
@@ -74,7 +75,7 @@ const DataBox = ({ dispatch }) => {
                 placeholder='Город...'
                 className='input__town on__info'
                 value={cityName}
-                onChange={(e) => { changeCityName(e) }}
+                onChange={handleCityNameChange}
                 onKeyDown={handleKeyDown}
                 spellCheck='false'
             />
