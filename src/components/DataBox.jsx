@@ -4,8 +4,8 @@ import WeatherService from '../API/WeatherService';
 import { changeCityNameAction, changeVideoAction } from '../store/weatherReducer';
 import rain from '../videos/rain_seamless_loop.mp4';
 import sunny from '../videos/sky_seamless_loop.mp4';
-import MyCityInput from './UI/CityInput/MyCityInput';
 import MyBox from './UI/Box/MyBox';
+import MyCityInput from './UI/CityInput/MyCityInput';
 
 
 const DataBox = ({ dispatch }) => {
@@ -42,12 +42,6 @@ const DataBox = ({ dispatch }) => {
                 break;
             case 'небольшой дождь':
                 dispatch(changeVideoAction(rain))
-                break;
-            case 'ясно':
-                dispatch(changeVideoAction(sunny))
-                break;
-            case 'облачно':
-                dispatch(changeVideoAction(sunny))
                 break;
             default:
                 dispatch(changeVideoAction(sunny))

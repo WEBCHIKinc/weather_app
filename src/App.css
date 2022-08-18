@@ -16,23 +16,6 @@ body {
     justify-content: center;
 }
 
-.video {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    z-index: -1;
-}
-
-.default-background {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    background-color: rgba(0, 0, 0, 0.34);
-}
-
 .button-test {
     position: absolute;
     left: 0;
