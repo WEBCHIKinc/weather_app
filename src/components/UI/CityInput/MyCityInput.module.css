@@ -12,6 +12,6 @@
 }
 
 .input__town.on__info {
-    top: 75%;
+    top: 80%;
     animation: videoEnter 1s ease 0s 1 normal forwards;
 }

@@ -20,5 +20,24 @@ export default class WeatherService {
                 })
         }
     }
+
+    static getWeatherForecastByName(cityName) {
+        return async (dispatch) => {
+            await axios.get(`api.openweathermap.org/data/2.5/forecast?q=${cityName}`, {
+                params: {
+                    units: 'metric',
+                    lang: 'ru',
+                    appid: 'd91a703a0a98bfa02281b20354b6c152'
+                }
+            })
+                .then((resp) => {
+                    dispatch(changeWeatherDataAction(resp.data))
+                    console.log();
+                })
+                .catch((err) => {
+                    alert('Неверное название города');
+                })
+        }
+    }
 }
 

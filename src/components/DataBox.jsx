@@ -4,6 +4,7 @@ import WeatherService from '../API/WeatherService';
 import { changeCityNameAction, changeVideoAction } from '../store/weatherReducer';
 import rain from '../videos/rain_seamless_loop.mp4';
 import sunny from '../videos/sky_seamless_loop.mp4';
+import MyCurrentWeatherBox from './UI/Box/CurrentWeatherBox/MyCurrentWeatherBox';
 import MyBox from './UI/Box/MyBox';
 import MyButton from './UI/Button/MyButton';
 import MyCityInput from './UI/CityInput/MyCityInput';
@@ -57,16 +58,15 @@ const DataBox = ({ dispatch }) => {
                     &&
                     <div className='weather-data-header'>
                         <h1 style={{ fontSize: 50 }}>{weatherCityName}</h1>
-                        <h2>{weatherDescription}</h2>
+
                     </div>
                 }
             </div>
 
-            <div className="weather-info-box">
-                <h1 style={{ fontSize: '77px', marginLeft: '20px' }}>
-                    {`${weatherCityTemp}°`}
-                </h1>
-            </div>
+            <MyCurrentWeatherBox
+                weatherCityTemp={weatherCityTemp}
+                weatherDescription={weatherDescription}
+            />
 
             <MyCityInput
                 infoPage={true}
@@ -82,7 +82,7 @@ const DataBox = ({ dispatch }) => {
             >
                 нед.
             </MyButton>
-            
+
             <MyButton
                 infoPage={true}
                 current={true}
