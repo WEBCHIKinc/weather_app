@@ -5,6 +5,7 @@ import { changeCityNameAction, changeVideoAction } from '../store/weatherReducer
 import rain from '../videos/rain_seamless_loop.mp4';
 import sunny from '../videos/sky_seamless_loop.mp4';
 import MyBox from './UI/Box/MyBox';
+import MyButton from './UI/Button/MyButton';
 import MyCityInput from './UI/CityInput/MyCityInput';
 
 
@@ -75,6 +76,19 @@ const DataBox = ({ dispatch }) => {
                 onKeyDown={handleKeyDown}
                 spellCheck='false'
             />
+
+            <MyButton
+                infoPage={true}
+            >
+                нед.
+            </MyButton>
+            
+            <MyButton
+                infoPage={true}
+                current={true}
+            >
+                сейчас
+            </MyButton>
         </MyBox>
     )
 }

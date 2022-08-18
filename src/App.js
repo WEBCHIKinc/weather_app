@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <MyDefaultBack />
-      <MyVideoBack />
+      {/* <MyVideoBack /> */}
 
       {weatherData
         ? <DataBox dispatch={dispatch} />

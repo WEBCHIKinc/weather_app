@@ -1,9 +1,18 @@
 import React from 'react'
-import cl from './MyButton.module.css'
+import classes from './MyButton.module.css'
 
-const MyButton = ({ children, ...props }) => {
+const MyButton = ({ infoPage, current, children, ...props }) => {
+    const rootClasses = [classes.button]
+
+    if (infoPage) {
+        rootClasses.push(classes.onInfo)
+    }
+    if (current) {
+        rootClasses.push(classes.current)
+    }
+
     return (
-        <button className={cl.MyButton} {...props}>
+        <button className={rootClasses.join(' ')} {...props}>
             {children}
         </button>
     )

@@ -1,4 +1,4 @@
-.MyButton {
+.button {
     position: relative;
     font-size: 26px;
     border: 5px solid #ffffff;
@@ -10,4 +10,15 @@
     top: 70%;
     box-sizing: border-box;
     font-family: 'Rubik Distressed', cursive;
+}
+
+.button.onInfo {
+    position: absolute;
+    right: 30px;
+    top: 35px;
+}
+.button.onInfo.current {
+    position: absolute;
+    left: 30px;
+    top: 35px;
 }
