@@ -3,16 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import './App.css';
 import DataBox from "./components/DataBox";
 import InputBox from "./components/InputBox";
+import MyDefaultBack from "./components/UI/DefaultBackground/MyDefaultBack";
+import MyVideoBack from "./components/UI/VideoBackground/MyVideoBack";
 
 function App() {
   const dispatch = useDispatch()
-  const video = useSelector(state => state.video)
   const weatherData = useSelector(state => state.weatherData)
 
   return (
     <div className="App">
-      <div className='default-background'></div>
-      <div className='video'><video src={video} autoPlay loop muted /></div>
+      <MyDefaultBack />
+      <MyVideoBack />
 
       {weatherData
         ? <DataBox dispatch={dispatch} />
