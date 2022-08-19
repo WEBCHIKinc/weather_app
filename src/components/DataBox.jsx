@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import WeatherService from '../API/WeatherService';
-import { changeCityNameAction, changeVideoAction } from '../store/weatherReducer';
+import { changeCityNameAction, changeisLoadingAction, changeVideoAction } from '../store/weatherReducer';
 import rain from '../videos/rain_seamless_loop.mp4';
 import sunny from '../videos/sky_seamless_loop.mp4';
 import MyCurrentWeatherBox from './UI/Box/CurrentWeatherBox/MyCurrentWeatherBox';
 import MyBox from './UI/Box/MyBox';
 import MyButton from './UI/Button/MyButton';
 import MyCityInput from './UI/CityInput/MyCityInput';
+import MyLoader from './UI/Loader/MyLoader';
 
 
 const DataBox = ({ dispatch }) => {
     const cityName = useSelector(state => state.cityName)
     const weatherData = useSelector(state => state.weatherData)
+    const isLoading = useSelector(state => state.isLoading)
     const [weatherDescription, setWeatherDescription] = useState('');
     const [weatherCityName, setWeatherCityName] = useState('');
     const [weatherCityTemp, setWeatherCityTemp] = useState('');
@@ -28,6 +30,7 @@ const DataBox = ({ dispatch }) => {
 
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
+            dispatch(changeisLoadingAction(true))
             getWeather()
             dispatch(changeCityNameAction(''))
         }
@@ -50,6 +53,12 @@ const DataBox = ({ dispatch }) => {
                 break;
         }
     }, [weatherData])
+
+    if (isLoading) {
+        return (
+            <MyLoader />
+        )
+    }
 
     return (
         <MyBox>

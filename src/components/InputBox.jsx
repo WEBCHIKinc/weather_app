@@ -1,24 +1,34 @@
 import React from 'react';
 import { useSelector } from "react-redux";
 import WeatherService from '../API/WeatherService';
-import { changeCityNameAction } from '../store/weatherReducer';
+import { changeCityNameAction, changeisLoadingAction } from '../store/weatherReducer';
 import MyCityInput from './UI/CityInput/MyCityInput';
 import MyButton from './UI/Button/MyButton';
 import MyForm from './UI/Form/MyForm';
 import MyBox from './UI/Box/MyBox';
+import MyLoader from './UI/Loader/MyLoader';
 
 const InputBox = ({ dispatch }) => {
     const cityName = useSelector(state => state.cityName)
+    const changeCityName = (value) => dispatch(changeCityNameAction(value))
+    const isLoading = useSelector(state => state.isLoading)
 
     const handleGetWeatherClick = (e) => {
         e.preventDefault();
+        dispatch(changeisLoadingAction(true))
         dispatch(WeatherService.getWeatherByName(cityName))
-        dispatch(changeCityNameAction(''))
+        changeCityName('')
     }
 
     const handleCityNameChange = (e) => {
         const { value } = e.target;
-        dispatch(changeCityNameAction(value));
+        changeCityName(value)
+    }
+
+    if (isLoading) {
+        return (
+            <MyLoader/>
+        )
     }
 
     return (

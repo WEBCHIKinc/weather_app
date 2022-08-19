@@ -4,6 +4,7 @@ import './App.css';
 import DataBox from "./components/DataBox";
 import InputBox from "./components/InputBox";
 import MyDefaultBack from "./components/UI/DefaultBackground/MyDefaultBack";
+import MyLoader from "./components/UI/Loader/MyLoader";
 import MyVideoBack from "./components/UI/VideoBackground/MyVideoBack";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         ? <DataBox dispatch={dispatch} />
         : <InputBox dispatch={dispatch} />
       }
+
     </div>
   );
 }

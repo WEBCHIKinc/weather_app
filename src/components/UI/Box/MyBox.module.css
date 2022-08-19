@@ -8,7 +8,7 @@
     background-color: rgba(87, 87, 87, 0.45);
     border-radius: 60px;
     flex-direction: column;
-    animation: videoEnter 2s ease 0s 1 normal forwards;
+    animation: videoEnter 1s ease 0s 1 normal forwards;
 }
 
 .MyBox:before {
