@@ -67,7 +67,7 @@ const DataBox = ({ dispatch }) => {
                 flexDirection: 'column',
                 alignItems: 'center',
                 position: 'absolute',
-                top: 7
+                top: '7%'
             }}>
                 {weatherData
                     &&
@@ -77,7 +77,6 @@ const DataBox = ({ dispatch }) => {
                         flexDirection: 'column'
                     }}>
                         <h1 style={{ fontSize: 50 }}>{weatherCityName}</h1>
-
                     </div>
                 }
             </div>
