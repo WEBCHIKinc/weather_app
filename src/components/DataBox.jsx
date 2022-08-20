@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import WeatherService from '../API/WeatherService';
 import { changeCityNameAction, changeisLoadingAction, changeVideoAction } from '../store/weatherReducer';
@@ -15,13 +15,13 @@ const DataBox = ({ dispatch }) => {
     const cityName = useSelector(state => state.cityName)
     const weatherData = useSelector(state => state.weatherData)
     const isLoading = useSelector(state => state.isLoading)
-    const [weatherDescription, setWeatherDescription] = useState('');
-    const [weatherCityName, setWeatherCityName] = useState('');
-    const [weatherCityTemp, setWeatherCityTemp] = useState('');
+    const weatherDescription = useSelector(state => state.weatherDescription)
+    const weatherCityName = useSelector(state => state.weatherCityName)
+    const weatherCityTemp = useSelector(state => state.weatherCityTemp)
+    const rRain = new RegExp('дождь', 'i')
 
-    const getWeather = () => {
-        dispatch(WeatherService.getWeatherByName(cityName))
-    }
+    const getWeather = () => { dispatch(WeatherService.getWeatherByName(cityName)) }
+    const changeVideo = (video) => { dispatch(changeVideoAction(video)) }
 
     const handleCityNameChange = (e) => {
         const { value } = e.target;
@@ -37,22 +37,12 @@ const DataBox = ({ dispatch }) => {
     }
 
     useEffect(() => {
-        setWeatherDescription(weatherData.weather[0].description)
-        setWeatherCityName(weatherData.name)
-        setWeatherCityTemp(weatherData.main.temp)
-
-        switch (weatherData.weather[0].description) {
-            case 'дождь':
-                dispatch(changeVideoAction(rain))
-                break;
-            case 'небольшой дождь':
-                dispatch(changeVideoAction(rain))
-                break;
-            default:
-                dispatch(changeVideoAction(sunny))
-                break;
+        if (rRain.test(weatherDescription)) {
+            changeVideo(rain)
+        } else {
+            changeVideo(sunny)
         }
-    }, [weatherData])
+    }, [weatherDescription])
 
     if (isLoading) {
         return (

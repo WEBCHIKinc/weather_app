@@ -1,5 +1,5 @@
 import axios from "axios";
-import { changeIsErrorAction, changeisLoadingAction, changeWeatherDataAction } from "../store/weatherReducer";
+import { changeIsErrorAction, changeisLoadingAction, changeWeatherCityNameAction, changeWeatherCityTempAction, changeWeatherDataAction, changeWeatherDescriptionAction } from "../store/weatherReducer";
 
 export default class WeatherService {
     static getWeatherByName(cityName) {
@@ -13,6 +13,9 @@ export default class WeatherService {
                     }
                 });
                 dispatch(changeWeatherDataAction(resp.data));
+                dispatch(changeWeatherDescriptionAction((resp.data.weather[0].description)));
+                dispatch(changeWeatherCityNameAction((resp.data.name)));
+                dispatch(changeWeatherCityTempAction((resp.data.main.temp)));
                 dispatch(changeisLoadingAction(false))
             }
             catch {

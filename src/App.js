@@ -6,6 +6,7 @@ import DataBox from "./components/DataBox";
 import InputBox from "./components/InputBox";
 import MyErrorBox from "./components/UI/AlertBox/MyErrorBox";
 import MyDefaultBack from "./components/UI/DefaultBackground/MyDefaultBack";
+import MyVideoBack from "./components/UI/VideoBackground/MyVideoBack";
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <MyDefaultBack />
-      {/* <MyVideoBack /> */}
+      <MyVideoBack />
 
       <CSSTransition
         in={isError}

@@ -4,6 +4,9 @@ const defaultState = {
     weatherData: '',
     isLoading: false,
     isError: false,
+    weatherDescription: '',
+    weatherCityName: '',
+    weatherCityTemp: '',
 }
 
 const CHANGE_VIDEO = 'CHANGE_VIDEO'
@@ -11,6 +14,9 @@ const CHANGE_CITY_NAME = 'CHANGE_CITY_NAME'
 const CHANGE_WEATHER_DATA = 'CHANGE_WEATHER_DATA'
 const IS_LOADING = 'IS_LOADING'
 const IS_ERROR = 'IS_ERROR'
+const WEATHER_DESCRIPTION = 'WEATHER_DESCRIPTION'
+const WEATHER_CITY_NAME = 'WEATHER_CITY_NAME'
+const WEATHER_CITY_TEMP = 'WEATHER_CITY_TEMP'
 
 export const weatherReducer = (state = defaultState, action) => {
     switch (action.type) {
@@ -24,6 +30,12 @@ export const weatherReducer = (state = defaultState, action) => {
             return { ...state, isLoading: action.payload }
         case 'IS_ERROR':
             return { ...state, isError: action.payload }
+        case 'WEATHER_DESCRIPTION':
+            return { ...state, weatherDescription: action.payload }
+        case 'WEATHER_CITY_NAME':
+            return { ...state, weatherCityName: action.payload }
+        case 'WEATHER_CITY_TEMP':
+            return { ...state, weatherCityTemp: action.payload }
         default:
             return state
     }
@@ -34,3 +46,6 @@ export const changeCityNameAction = (payload) => ({ type: CHANGE_CITY_NAME, payl
 export const changeWeatherDataAction = (payload) => ({ type: CHANGE_WEATHER_DATA, payload: payload })
 export const changeisLoadingAction = (payload) => ({ type: IS_LOADING, payload: payload })
 export const changeIsErrorAction = (payload) => ({ type: IS_ERROR, payload: payload })
+export const changeWeatherDescriptionAction = (payload) => ({ type: WEATHER_DESCRIPTION, payload: payload })
+export const changeWeatherCityNameAction = (payload) => ({ type: WEATHER_CITY_NAME, payload: payload })
+export const changeWeatherCityTempAction = (payload) => ({ type: WEATHER_CITY_TEMP, payload: payload })
