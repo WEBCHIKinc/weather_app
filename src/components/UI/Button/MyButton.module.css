@@ -5,7 +5,7 @@
     border-radius: 100px 10px 100px 10px;
     width: 22%;
     cursor: pointer;
-    background-color: #3b3a3a;
+    background-color: #3b3a3a52;
     color: #ffffff;
     top: 70%;
     box-sizing: border-box;
@@ -17,6 +17,7 @@
     right: 30px;
     top: 35px;
 }
+
 .button.onInfo.current {
     position: absolute;
     left: 30px;

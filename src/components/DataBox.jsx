@@ -62,10 +62,20 @@ const DataBox = ({ dispatch }) => {
 
     return (
         <MyBox>
-            <div className="title">
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                position: 'absolute',
+                top: 7
+            }}>
                 {weatherData
                     &&
-                    <div className='weather-data-header'>
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        flexDirection: 'column'
+                    }}>
                         <h1 style={{ fontSize: 50 }}>{weatherCityName}</h1>
 
                     </div>
@@ -98,7 +108,7 @@ const DataBox = ({ dispatch }) => {
             >
                 сейчас
             </MyButton>
-        </MyBox>
+        </MyBox >
     )
 }
 

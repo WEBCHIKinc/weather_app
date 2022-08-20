@@ -1,5 +1,5 @@
 import axios from "axios";
-import { changeisLoadingAction, changeWeatherDataAction } from "../store/weatherReducer";
+import { changeIsErrorAction, changeisLoadingAction, changeWeatherDataAction } from "../store/weatherReducer";
 
 export default class WeatherService {
     static getWeatherByName(cityName) {
@@ -18,6 +18,10 @@ export default class WeatherService {
             catch {
                 console.log('Неверное название города');
                 dispatch(changeisLoadingAction(false));
+                dispatch(changeIsErrorAction(true))
+                setTimeout(() => {
+                    dispatch(changeIsErrorAction(false))
+                }, 3000)
             }
         }
     }
