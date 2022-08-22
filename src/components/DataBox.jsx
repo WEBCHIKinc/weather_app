@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import WeatherService from '../API/WeatherService';
 import { changeCityNameAction, changeisLoadingAction, changeVideoAction } from '../store/weatherReducer';
@@ -18,21 +18,24 @@ const DataBox = ({ dispatch }) => {
     const weatherDescription = useSelector(state => state.weatherDescription)
     const weatherCityName = useSelector(state => state.weatherCityName)
     const weatherCityTemp = useSelector(state => state.weatherCityTemp)
+    const [current, setCurrent] = useState('daily');
     const rRain = new RegExp('дождь', 'i')
 
     const getWeather = () => { dispatch(WeatherService.getWeatherByName(cityName)) }
     const changeVideo = (video) => { dispatch(changeVideoAction(video)) }
+    const changeCityName = (value) => { dispatch(changeCityNameAction(value)) }
+
 
     const handleCityNameChange = (e) => {
         const { value } = e.target;
-        dispatch(changeCityNameAction(value));
+        changeCityName(value)
     }
 
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
             dispatch(changeisLoadingAction(true))
             getWeather()
-            dispatch(changeCityNameAction(''))
+            changeCityName('')
         }
     }
 
@@ -71,10 +74,14 @@ const DataBox = ({ dispatch }) => {
                 }
             </div>
 
-            <MyCurrentWeatherBox
-                weatherCityTemp={weatherCityTemp}
-                weatherDescription={weatherDescription}
-            />
+            {current === 'daily'
+                ? <MyCurrentWeatherBox
+                    weatherCityTemp={weatherCityTemp}
+                    weatherDescription={weatherDescription}
+                />
+                : 
+                <div>none</div>
+            }
 
             <MyCityInput
                 infoPage={true}
@@ -86,14 +93,18 @@ const DataBox = ({ dispatch }) => {
             />
 
             <MyButton
-                infoPage={true}
+                infoPage
+                current={current === 'weekly'}
+                onClick={() => setCurrent('weekly')}
             >
                 нед.
             </MyButton>
 
             <MyButton
-                infoPage={true}
-                current={true}
+                infoPage
+                daily
+                current={current === 'daily'}
+                onClick={() => setCurrent('daily')}
             >
                 сейчас
             </MyButton>

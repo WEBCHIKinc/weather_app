@@ -5,7 +5,7 @@
     border-radius: 100px 10px 100px 10px;
     width: 22%;
     cursor: pointer;
-    background-color: #3b3a3a52;
+    background-color: #8f8c8c50;
     color: #ffffff;
     top: 70%;
     box-sizing: border-box;
@@ -18,8 +18,12 @@
     top: 35px;
 }
 
-.button.onInfo.current {
+.button.daily {
     position: absolute;
     left: 30px;
     top: 35px;
+}
+
+.button.current {
+    background-color: rgba(47, 47, 47, 0.696);
 }

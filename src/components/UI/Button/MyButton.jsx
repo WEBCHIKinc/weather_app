@@ -1,11 +1,14 @@
 import React from 'react'
 import classes from './MyButton.module.css'
 
-const MyButton = ({ infoPage, current, children, ...props }) => {
+const MyButton = ({ infoPage, daily, children,current, ...props }) => {
     const rootClasses = [classes.button]
 
     if (infoPage) {
         rootClasses.push(classes.onInfo)
+    }
+    if (daily) {
+        rootClasses.push(classes.daily)
     }
     if (current) {
         rootClasses.push(classes.current)
