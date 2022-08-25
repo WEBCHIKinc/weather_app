@@ -1,5 +1,5 @@
 import axios from "axios";
-import { changeIsErrorAction, changeisLoadingAction, changeWeatherCityNameAction, changeWeatherCityTempAction, changeWeatherDataAction, changeWeatherDescriptionAction } from "../store/weatherReducer";
+import { changeIsErrorAction, changeisLoadingAction, changeWeatherCityNameAction, changeWeatherCityTempAction, changeWeatherDataAction, changeWeatherDescriptionAction, changeWeatherForecastDataAction } from "../store/weatherReducer";
 
 export default class WeatherService {
     static getWeatherByName(cityName) {
@@ -32,16 +32,16 @@ export default class WeatherService {
     static getWeatherForecastByName(cityName) {
         return async (dispatch) => {
             try {
-                const resp = await axios.get(`api.openweathermap.org/data/2.5/forecast?q=${cityName}`, {
+                const resp = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}`, {
                     params: {
                         units: 'metric',
                         lang: 'ru',
                         appid: 'd91a703a0a98bfa02281b20354b6c152'
                     }
                 })
-                dispatch(changeWeatherDataAction(resp.data))
+                dispatch(changeWeatherForecastDataAction(resp.data))
             } catch {
-                alert('Неверное название города');
+                console.log('Неверное название города');
             }
         }
     }

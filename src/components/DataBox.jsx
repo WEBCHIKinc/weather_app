@@ -22,6 +22,7 @@ const DataBox = ({ dispatch }) => {
     const rRain = new RegExp('дождь', 'i')
 
     const getWeather = () => { dispatch(WeatherService.getWeatherByName(cityName)) }
+    const getForecastWeather = () => { dispatch(WeatherService.getWeatherForecastByName(cityName)) }
     const changeVideo = (video) => { dispatch(changeVideoAction(video)) }
     const changeCityName = (value) => { dispatch(changeCityNameAction(value)) }
 
@@ -35,6 +36,7 @@ const DataBox = ({ dispatch }) => {
         if (e.key === "Enter") {
             dispatch(changeisLoadingAction(true))
             getWeather()
+            getForecastWeather()
             changeCityName('')
         }
     }

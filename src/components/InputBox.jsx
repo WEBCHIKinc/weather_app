@@ -10,13 +10,18 @@ import MyLoader from './UI/Loader/MyLoader';
 
 const InputBox = ({ dispatch }) => {
     const cityName = useSelector(state => state.cityName)
-    const changeCityName = (value) => dispatch(changeCityNameAction(value))
     const isLoading = useSelector(state => state.isLoading)
+
+    const changeCityName = (value) => dispatch(changeCityNameAction(value))
+    const getWeather = () => { dispatch(WeatherService.getWeatherByName(cityName)) }
+    const getForecastWeather = () => { dispatch(WeatherService.getWeatherForecastByName(cityName)) }
+    const changeLoading = (boolean) => dispatch(changeisLoadingAction(boolean))
 
     const handleGetWeatherClick = (e) => {
         e.preventDefault();
-        dispatch(changeisLoadingAction(true))
-        dispatch(WeatherService.getWeatherByName(cityName))
+        changeLoading(true)
+        getWeather()
+        getForecastWeather()
         changeCityName('')
     }
 
@@ -27,7 +32,7 @@ const InputBox = ({ dispatch }) => {
 
     if (isLoading) {
         return (
-            <MyLoader/>
+            <MyLoader />
         )
     }
 
