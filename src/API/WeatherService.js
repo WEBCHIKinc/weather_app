@@ -16,7 +16,7 @@ export default class WeatherService {
                 dispatch(changeWeatherDescriptionAction((resp.data.weather[0].description)));
                 dispatch(changeWeatherCityNameAction((resp.data.name)));
                 dispatch(changeWeatherCityTempAction((resp.data.main.temp)));
-                dispatch(changeisLoadingAction(false))
+                
             }
             catch {
                 console.log('Неверное название города');
@@ -40,8 +40,10 @@ export default class WeatherService {
                     }
                 })
                 dispatch(changeWeatherForecastDataAction(resp.data))
+                dispatch(changeisLoadingAction(false))
             } catch {
                 console.log('Неверное название города');
+                dispatch(changeisLoadingAction(false))
             }
         }
     }

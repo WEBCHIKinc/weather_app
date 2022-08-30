@@ -41,7 +41,6 @@ const InputBox = ({ dispatch }) => {
             <MyForm>
                 <MyCityInput
                     placeholder='Город...'
-                    className='input__town'
                     value={cityName}
                     onChange={handleCityNameChange}
                     spellCheck={false}

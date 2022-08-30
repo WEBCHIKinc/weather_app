@@ -5,7 +5,9 @@ import { changeCityNameAction, changeisLoadingAction, changeVideoAction } from '
 import rain from '../videos/rain_seamless_loop.mp4';
 import sunny from '../videos/sky_seamless_loop.mp4';
 import MyCurrentWeatherBox from './UI/Box/CurrentWeatherBox/MyCurrentWeatherBox';
+
 import MyBox from './UI/Box/MyBox';
+import MyForecastWeatherBox from './UI/Box/MyForecastWeatherBox/MyForecastWeatherBox';
 import MyButton from './UI/Button/MyButton';
 import MyCityInput from './UI/CityInput/MyCityInput';
 import MyLoader from './UI/Loader/MyLoader';
@@ -81,8 +83,8 @@ const DataBox = ({ dispatch }) => {
                     weatherCityTemp={weatherCityTemp}
                     weatherDescription={weatherDescription}
                 />
-                : 
-                <div>none</div>
+                :
+                <MyForecastWeatherBox />
             }
 
             <MyCityInput
