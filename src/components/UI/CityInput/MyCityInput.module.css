@@ -9,6 +9,7 @@
     text-indent: 10px;
     color: #000000;
     font-family: 'Rubik Distressed', cursive;
+    opacity: 70%;
 }
 
 .input__town.on__info {

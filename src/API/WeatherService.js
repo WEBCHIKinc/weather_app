@@ -15,7 +15,7 @@ export default class WeatherService {
                 dispatch(changeWeatherDataAction(resp.data));
                 dispatch(changeWeatherDescriptionAction((resp.data.weather[0].description)));
                 dispatch(changeWeatherCityNameAction((resp.data.name)));
-                dispatch(changeWeatherCityTempAction((resp.data.main.temp)));
+                dispatch(changeWeatherCityTempAction((Math.round(resp.data.main.temp))));
                 
             }
             catch {
