@@ -1,10 +1,10 @@
 .input__town {
     position: absolute;
-    top: 43%;
-    border: 5px solid #3e3e3ec8;
-    border-radius: 30px;
+    top: 45%;
+    border: 3px solid #3e3e3ec8;
+    border-radius: 20px;
     width: 50%;
-    font-size: 30px;
+    font-size: 25px;
     box-sizing: border-box;
     text-indent: 10px;
     color: #000000;
@@ -13,6 +13,6 @@
 }
 
 .input__town.on__info {
-    top: 80%;
+    top: 82%;
     animation: videoEnter 1s ease 0s 1 normal forwards;
 }
