@@ -1,71 +1,91 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import WeatherService from '../API/WeatherService';
-import { changeCityNameAction, changeVideoAction } from '../store/weatherReducer';
+import { changeCityNameAction, changeisLoadingAction, changeVideoAction } from '../store/weatherReducer';
 import rain from '../videos/rain_seamless_loop.mp4';
 import sunny from '../videos/sky_seamless_loop.mp4';
+import MyCurrentWeatherBox from './UI/Box/CurrentWeatherBox/MyCurrentWeatherBox';
+
 import MyBox from './UI/Box/MyBox';
+import MyForecastWeatherBox from './UI/Box/MyForecastWeatherBox/MyForecastWeatherBox';
+import MyButton from './UI/Button/MyButton';
 import MyCityInput from './UI/CityInput/MyCityInput';
+import MyLoader from './UI/Loader/MyLoader';
 
 
 const DataBox = ({ dispatch }) => {
     const cityName = useSelector(state => state.cityName)
     const weatherData = useSelector(state => state.weatherData)
-    const [weatherDescription, setWeatherDescription] = useState('');
-    const [weatherCityName, setWeatherCityName] = useState('');
-    const [weatherCityTemp, setWeatherCityTemp] = useState('');
+    const isLoading = useSelector(state => state.isLoading)
+    const weatherDescription = useSelector(state => state.weatherDescription)
+    const weatherCityName = useSelector(state => state.weatherCityName)
+    const weatherCityTemp = useSelector(state => state.weatherCityTemp)
+    const [current, setCurrent] = useState('daily');
+    const rRain = new RegExp('дождь', 'i')
 
-    const getWeather = () => {
-        dispatch(WeatherService.getWeatherByName(cityName))
-    }
+    const getWeather = () => { dispatch(WeatherService.getWeatherByName(cityName)) }
+    const getForecastWeather = () => { dispatch(WeatherService.getWeatherForecastByName(cityName)) }
+    const changeVideo = (video) => { dispatch(changeVideoAction(video)) }
+    const changeCityName = (value) => { dispatch(changeCityNameAction(value)) }
+
 
     const handleCityNameChange = (e) => {
         const { value } = e.target;
-        dispatch(changeCityNameAction(value));
+        changeCityName(value)
     }
 
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
+            dispatch(changeisLoadingAction(true))
             getWeather()
-            dispatch(changeCityNameAction(''))
+            getForecastWeather()
+            changeCityName('')
         }
     }
 
     useEffect(() => {
-        setWeatherDescription(weatherData.weather[0].description)
-        setWeatherCityName(weatherData.name)
-        setWeatherCityTemp(weatherData.main.temp)
-
-        switch (weatherData.weather[0].description) {
-            case 'дождь':
-                dispatch(changeVideoAction(rain))
-                break;
-            case 'небольшой дождь':
-                dispatch(changeVideoAction(rain))
-                break;
-            default:
-                dispatch(changeVideoAction(sunny))
-                break;
+        if (rRain.test(weatherDescription)) {
+            changeVideo(rain)
+        } else {
+            changeVideo(sunny)
         }
-    }, [weatherData])
+    }, [weatherDescription])
+
+    if (isLoading) {
+        return (
+            <MyLoader />
+        )
+    }
 
     return (
         <MyBox>
-            <div className="title">
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                position: 'absolute',
+                top: '7%'
+            }}>
                 {weatherData
                     &&
-                    <div className='weather-data-header'>
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        flexDirection: 'column'
+                    }}>
                         <h1 style={{ fontSize: 50 }}>{weatherCityName}</h1>
-                        <h2>{weatherDescription}</h2>
                     </div>
                 }
             </div>
 
-            <div className="weather-info-box">
-                <h1 style={{ fontSize: '77px', marginLeft: '20px' }}>
-                    {`${weatherCityTemp}°`}
-                </h1>
-            </div>
+            {current === 'daily'
+                ? <MyCurrentWeatherBox
+                    weatherCityTemp={weatherCityTemp}
+                    weatherDescription={weatherDescription}
+                />
+                :
+                <MyForecastWeatherBox />
+            }
 
             <MyCityInput
                 infoPage={true}
@@ -75,7 +95,24 @@ const DataBox = ({ dispatch }) => {
                 onKeyDown={handleKeyDown}
                 spellCheck='false'
             />
-        </MyBox>
+
+            <MyButton
+                infoPage
+                current={current === 'weekly'}
+                onClick={() => setCurrent('weekly')}
+            >
+                нед.
+            </MyButton>
+
+            <MyButton
+                infoPage
+                daily
+                current={current === 'daily'}
+                onClick={() => setCurrent('daily')}
+            >
+                сейчас
+            </MyButton>
+        </MyBox >
     )
 }
 

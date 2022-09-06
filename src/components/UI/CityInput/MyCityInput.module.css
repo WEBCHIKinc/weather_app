@@ -1,7 +1,7 @@
 .input__town {
     position: absolute;
     top: 43%;
-    border: 5px solid #3e3e3e;
+    border: 5px solid #3e3e3ec8;
     border-radius: 30px;
     width: 50%;
     font-size: 30px;
@@ -9,9 +9,10 @@
     text-indent: 10px;
     color: #000000;
     font-family: 'Rubik Distressed', cursive;
+    opacity: 70%;
 }
 
 .input__town.on__info {
-    top: 75%;
+    top: 80%;
     animation: videoEnter 1s ease 0s 1 normal forwards;
 }

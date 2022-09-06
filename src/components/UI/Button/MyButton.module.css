@@ -1,13 +1,29 @@
-.MyButton {
+.button {
     position: relative;
-    font-size: 26px;
-    border: 5px solid #ffffff;
+    font-size: 23px;
+    border: 5px solid #ffffffaf;
     border-radius: 100px 10px 100px 10px;
     width: 22%;
     cursor: pointer;
-    background-color: #3b3a3a;
-    color: #ffffff;
+    background-color: #8f8c8c50;
+    color: #ffffffbd;
     top: 70%;
     box-sizing: border-box;
     font-family: 'Rubik Distressed', cursive;
+}
+
+.button.onInfo {
+    position: absolute;
+    right: 30px;
+    top: 35px;
+}
+
+.button.daily {
+    position: absolute;
+    left: 30px;
+    top: 35px;
+}
+
+.button.current {
+    background-color: rgba(47, 47, 47, 0.696);
 }
