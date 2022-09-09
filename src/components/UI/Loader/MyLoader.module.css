@@ -9,7 +9,7 @@
     position: absolute;
     width: 6px;
     height: 6px;
-    background: rgb(0, 0, 0);
+    background: rgba(57, 57, 57, 0.679);
     border-radius: 50%;
     animation: lds-default 1.2s linear infinite;
 }
