@@ -1,67 +1,65 @@
 .button {
-    position: relative;
-    font-size: 23px;
-    border: 3px solid #ffffffaf;
-    border-radius: 100px 30px 100px 30px;
-    width: 22%;
-    cursor: pointer;
-    background-color: #8f8c8c50;
-    color: #ffffffbd;
-    top: 73%;
-    box-sizing: border-box;
-    font-family: 'Rubik Distressed', cursive;
-    z-index: 0;
+  position: relative;
+  font-size: 23px;
+  border: 3px solid #ffffffaf;
+  border-radius: 100px 30px 100px 30px;
+  width: 22%;
+  cursor: pointer;
+  background-color: #8f8c8c50;
+  color: #ffffffbd;
+  top: 73%;
+  box-sizing: border-box;
+  font-family: "Rubik Distressed", cursive;
+  z-index: 0;
 }
 
 .button.onInfo {
-    position: absolute;
-    right: 30px;
-    top: 39px;
+  position: absolute;
+  right: 30px;
+  top: 39px;
 }
 
 .button.daily {
-    position: absolute;
-    left: 30px;
-    top: 39px;
+  position: absolute;
+  left: 30px;
+  top: 39px;
 }
 
 .button.current {
-    background-color: rgba(47, 47, 47, 0.696);
+  background-color: rgba(47, 47, 47, 0.696);
 }
 
-
 .button:before {
-    content: '';
-    background: linear-gradient(45deg, #8f8f8f, #0a0a0a8c, #a3a3a38b, #35353580);
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    animation: glowing 20s linear infinite;
-    opacity: 0;
-    transition: opacity .3s ease-in-out;
-    border-radius: 100px 30px 100px 30px;
+  content: "";
+  background: linear-gradient(45deg, #8f8f8f, #0a0a0a8c, #a3a3a38b, #35353580);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 100px 30px 100px 30px;
 }
 
 .button:hover:before {
-    opacity: 1;
+  opacity: 1;
 }
 
-
 @keyframes glowing {
-    0% {
-        background-position: 0 0;
-    }
+  0% {
+    background-position: 0 0;
+  }
 
-    50% {
-        background-position: 400% 0;
-    }
+  50% {
+    background-position: 400% 0;
+  }
 
-    100% {
-        background-position: 0 0;
-    }
+  100% {
+    background-position: 0 0;
+  }
 }

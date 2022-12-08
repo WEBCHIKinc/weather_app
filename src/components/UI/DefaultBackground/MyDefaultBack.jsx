@@ -1,12 +1,8 @@
-import React from 'react'
-import classes from './MyDefaultBack.module.css'
+import React from "react";
+import classes from "./MyDefaultBack.module.css";
 
 const MyDefaultBack = () => {
-    return (
-        <div className={classes.default}>
+  return <div className={classes.default}></div>;
+};
 
-        </div>
-    )
-}
-
-export default MyDefaultBack
+export default MyDefaultBack;
