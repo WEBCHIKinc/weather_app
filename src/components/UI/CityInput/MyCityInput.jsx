@@ -2,7 +2,6 @@ import React from 'react'
 import classes from './MyCityInput.module.css'
 
 const MyCityInput = ({ infoPage, ...props }) => {
-
     const rootClasses = [classes.input__town]
 
     if (infoPage) {

@@ -16,7 +16,7 @@ export default class WeatherService {
                 dispatch(changeWeatherDescriptionAction((resp.data.weather[0].description)));
                 dispatch(changeWeatherCityNameAction((resp.data.name)));
                 dispatch(changeWeatherCityTempAction((Math.round(resp.data.main.temp))));
-                
+
             }
             catch {
                 console.log('Неверное название города');

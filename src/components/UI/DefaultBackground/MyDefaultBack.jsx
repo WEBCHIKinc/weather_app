@@ -3,9 +3,7 @@ import classes from './MyDefaultBack.module.css'
 
 const MyDefaultBack = () => {
     return (
-        <div className={classes.default}>
-
-        </div>
+        <div className={classes.default}></div>
     )
 }
 

@@ -29,7 +29,6 @@
     background-color: rgba(47, 47, 47, 0.696);
 }
 
-
 .button:before {
     content: '';
     background: linear-gradient(45deg, #8f8f8f, #0a0a0a8c, #a3a3a38b, #35353580);
@@ -50,7 +49,6 @@
 .button:hover:before {
     opacity: 1;
 }
-
 
 @keyframes glowing {
     0% {
