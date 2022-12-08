@@ -1,50 +1,50 @@
 .MyBox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    width: 38%;
-    height: 53%;
-    background-color: rgba(87, 87, 87, 0.225);
-    border-radius: 60px;
-    flex-direction: column;
-    animation: videoEnter 1s ease 0s 1 normal forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 38%;
+  height: 53%;
+  background-color: rgba(87, 87, 87, 0.225);
+  border-radius: 60px;
+  flex-direction: column;
+  animation: videoEnter 1s ease 0s 1 normal forwards;
 }
 
 .MyBox:before {
-    content: "";
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(-45deg, #000000a6 0%, #ffffffa6 100%);
-    transform: translate3d(31px, 20px, 0) scale(0.95);
-    filter: blur(20px);
-    opacity: var(0.7);
-    transition: opacity 0.3s;
-    border-radius: inherit;
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(-45deg, #000000a6 0%, #ffffffa6 100%);
+  transform: translate3d(31px, 20px, 0) scale(0.95);
+  filter: blur(20px);
+  opacity: var(0.7);
+  transition: opacity 0.3s;
+  border-radius: inherit;
 }
 
 .MyBox::after {
-    content: "";
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: inherit;
-    border-radius: inherit;
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: inherit;
+  border-radius: inherit;
 }
 
 @keyframes videoEnter {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }

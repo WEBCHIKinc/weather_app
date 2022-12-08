@@ -1,8 +1,8 @@
 .MyForm {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
