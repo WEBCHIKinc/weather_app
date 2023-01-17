@@ -16,6 +16,14 @@ body {
   justify-content: center;
 }
 
+.cityNameBox {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 7%;
+}
+
 .button-test {
   position: absolute;
   left: 0;

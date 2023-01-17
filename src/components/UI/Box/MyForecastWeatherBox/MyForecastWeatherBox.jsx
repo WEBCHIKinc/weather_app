@@ -1,12 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import MyBox from "../MyBox";
 import classes from "./MyForecastWeatherBox.module.css";
 
 const MyForecastWeatherBox = () => {
-  const weatherForecast = useSelector((state) => state.weatherForecastData);
+  const { weatherForecastData } = useSelector((state) => state.weather);
   const arrOfindx = [0, 8, 16, 24, 32];
-  let weeklyData = weatherForecast.list.filter((el, i) =>
+  let weeklyData = weatherForecastData.list.filter((el, i) =>
     arrOfindx.some((j) => i === j)
   );
 

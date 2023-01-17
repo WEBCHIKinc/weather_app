@@ -1,65 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import WeatherService from "../API/WeatherService";
-import {
-  changeCityNameAction,
-  changeisLoadingAction,
-  changeVideoAction,
-} from "../store/weatherReducer";
-import rain from "../videos/rain_seamless_loop.mp4";
-import sunny from "../videos/sky_seamless_loop.mp4";
 import MyCurrentWeatherBox from "./UI/Box/CurrentWeatherBox/MyCurrentWeatherBox";
-
 import MyBox from "./UI/Box/MyBox";
 import MyForecastWeatherBox from "./UI/Box/MyForecastWeatherBox/MyForecastWeatherBox";
 import MyButton from "./UI/Button/MyButton";
 import MyCityInput from "./UI/CityInput/MyCityInput";
 import MyLoader from "./UI/Loader/MyLoader";
+import { useActions } from "../hooks/useActions";
 
-const DataBox = ({ dispatch }) => {
-  const cityName = useSelector((state) => state.cityName);
-  const weatherData = useSelector((state) => state.weatherData);
-  const isLoading = useSelector((state) => state.isLoading);
-  const weatherDescription = useSelector((state) => state.weatherDescription);
-  const weatherCityName = useSelector((state) => state.weatherCityName);
-  const weatherCityTemp = useSelector((state) => state.weatherCityTemp);
+const DataBox = () => {
+  const {
+    cityName,
+    isLoading,
+    weatherDescription,
+    weatherCityName,
+    weatherCityTemp,
+  } = useSelector((state) => state.weather);
+  const { changeCityName, getWeather, getForecastWeather } = useActions();
   const [current, setCurrent] = useState("daily");
-  const rRain = new RegExp("дождь", "i");
-
-  const getWeather = () => {
-    dispatch(WeatherService.getWeatherByName(cityName));
-  };
-  const getForecastWeather = () => {
-    dispatch(WeatherService.getWeatherForecastByName(cityName));
-  };
-  const changeVideo = (video) => {
-    dispatch(changeVideoAction(video));
-  };
-  const changeCityName = (value) => {
-    dispatch(changeCityNameAction(value));
-  };
 
   const handleCityNameChange = (e) => {
-    const { value } = e.target;
-    changeCityName(value);
+    const cityName = e.target.value;
+    changeCityName(cityName);
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      dispatch(changeisLoadingAction(true));
-      getWeather();
-      getForecastWeather();
+      getWeather(cityName);
+      getForecastWeather(cityName);
       changeCityName("");
     }
   };
-
-  useEffect(() => {
-    if (rRain.test(weatherDescription)) {
-      changeVideo(rain);
-    } else {
-      changeVideo(sunny);
-    }
-  }, [weatherDescription]);
 
   if (isLoading) {
     return <MyLoader />;
@@ -67,26 +38,8 @@ const DataBox = ({ dispatch }) => {
 
   return (
     <MyBox>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          position: "absolute",
-          top: "7%",
-        }}
-      >
-        {weatherData && (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              flexDirection: "column",
-            }}
-          >
-            <h1 style={{ fontSize: 50 }}>{weatherCityName}</h1>
-          </div>
-        )}
+      <div className="cityNameBox">
+        <h1 style={{ fontSize: 50 }}>{weatherCityName}</h1>
       </div>
 
       {current === "daily" ? (
@@ -100,7 +53,7 @@ const DataBox = ({ dispatch }) => {
 
       <MyCityInput
         infoPage={true}
-        placeholder="Город..."
+        placeholder="City..."
         value={cityName}
         onChange={handleCityNameChange}
         onKeyDown={handleKeyDown}
@@ -112,7 +65,7 @@ const DataBox = ({ dispatch }) => {
         current={current === "weekly"}
         onClick={() => setCurrent("weekly")}
       >
-        нед.
+        Week
       </MyButton>
 
       <MyButton
@@ -121,7 +74,7 @@ const DataBox = ({ dispatch }) => {
         current={current === "daily"}
         onClick={() => setCurrent("daily")}
       >
-        сейчас
+        Now
       </MyButton>
     </MyBox>
   );
