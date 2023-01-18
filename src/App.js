@@ -6,6 +6,9 @@ import DataBox from "./components/DataBox";
 import InputBox from "./components/InputBox";
 import MyErrorBox from "./components/UI/AlertBox/MyErrorBox";
 import MyDefaultBack from "./components/UI/DefaultBackground/MyDefaultBack";
+import LondonBox from "./components/LondonBox";
+import NewYorkBox from "./components/NewYorkBox";
+import KyivBox from "./components/KyivBox";
 
 function App() {
   const { weatherData, isError } = useSelector((state) => state.weather);
@@ -21,6 +24,9 @@ function App() {
       >
         <MyErrorBox />
       </CSSTransition>
+      <LondonBox />
+      <NewYorkBox />
+      <KyivBox />
       {weatherData ? <DataBox /> : <InputBox />}
     </div>
   );
