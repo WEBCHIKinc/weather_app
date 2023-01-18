@@ -4,9 +4,8 @@ import classes from "./MyForecastWeatherBox.module.css";
 
 const MyForecastWeatherBox = () => {
   const { weatherForecastData } = useSelector((state) => state.weather);
-  const arrOfindx = [0, 8, 16, 24, 32];
-  let weeklyData = weatherForecastData.list.filter((el, i) =>
-    arrOfindx.some((j) => i === j)
+  let weeklyData = weatherForecastData.list.filter((el, index) =>
+    Number.isInteger(index / 8)
   );
 
   return (

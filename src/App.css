@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+*:focus {
+  outline: none;
+}
+
 body {
   font-family: "Rubik Distressed", cursive;
   color: rgb(235, 235, 235);

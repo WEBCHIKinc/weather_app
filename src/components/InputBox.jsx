@@ -37,7 +37,7 @@ const InputBox = () => {
           spellCheck={false}
         />
         <MyButton type="submit" onClick={handleGetWeatherClick}>
-          Ввод
+          Go
         </MyButton>
       </MyForm>
     </MyBox>
