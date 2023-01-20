@@ -1,7 +1,15 @@
 import React from "react";
 import classes from "./MyBox.module.css";
 
-const MyBox = ({ londonBox, newYorkBox, kyivBox, children, ...props }) => {
+const MyBox = ({
+  londonBox,
+  newYorkBox,
+  kyivBox,
+  torontoBox,
+  ipBox,
+  children,
+  ...props
+}) => {
   const rootClasses = [classes.MyBox];
 
   if (londonBox) {
@@ -12,6 +20,12 @@ const MyBox = ({ londonBox, newYorkBox, kyivBox, children, ...props }) => {
   }
   if (kyivBox) {
     rootClasses.push(classes.kyivBox);
+  }
+  if (torontoBox) {
+    rootClasses.push(classes.torontoBox);
+  }
+  if (ipBox) {
+    rootClasses.push(classes.ipBox);
   }
 
   return (

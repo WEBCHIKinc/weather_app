@@ -32,6 +32,19 @@
   height: 170px;
 }
 
+.MyBox.torontoBox {
+  bottom: 150px;
+  right: 10px;
+  width: 400px;
+  height: 170px;
+}
+
+.MyBox.ipBox {
+  bottom: 10px;
+  width: 400px;
+  height: 130px;
+}
+
 .MyBox:before {
   content: "";
   z-index: -1;

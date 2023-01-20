@@ -4,25 +4,25 @@ import { useSelector } from "react-redux";
 import MyCurrentWeatherBox from "./UI/Box/CurrentWeatherBox/MyCurrentWeatherBox";
 import MyLoader from "./UI/Loader/MyLoader";
 
-const LondonBox = () => {
-  const { londonWeatherData } = useSelector((state) => state.weather);
+const TorontoBox = () => {
+  const { torontoWeatherData } = useSelector((state) => state.weather);
 
-  if (londonWeatherData)
+  if (torontoWeatherData)
     return (
-      <MyBox londonBox>
-        <h1>London</h1>
+      <MyBox torontoBox>
+        <h1>Toronto</h1>
         <MyCurrentWeatherBox
           mini={true}
-          weatherCityTemp={Math.round(londonWeatherData.main.temp)}
-          weatherDescription={londonWeatherData.weather[0].description}
+          weatherCityTemp={Math.round(torontoWeatherData.main.temp)}
+          weatherDescription={torontoWeatherData.weather[0].description}
         />
       </MyBox>
     );
   return (
-    <MyBox londonBox>
+    <MyBox torontoBox>
       <MyLoader />
     </MyBox>
   );
 };
 
-export default LondonBox;
+export default TorontoBox;
