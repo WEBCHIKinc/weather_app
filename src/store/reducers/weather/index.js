@@ -7,6 +7,11 @@ const initialState = {
   weatherDescription: "",
   weatherCityName: "",
   weatherCityTemp: "",
+  londonWeatherData: "",
+  newYorkWeatherData: "",
+  kyivWeatherData: "",
+  torontoWeatherData: "",
+  ipWeatherData: "",
 };
 
 export default function weatherReducer(state = initialState, action) {
@@ -27,6 +32,16 @@ export default function weatherReducer(state = initialState, action) {
       return { ...state, weatherCityName: action.payload };
     case "WEATHER_CITY_TEMP":
       return { ...state, weatherCityTemp: action.payload };
+    case "LONDON_WEATHER_DATA":
+      return { ...state, londonWeatherData: action.payload };
+    case "NEW_YORK_WEATHER_DATA":
+      return { ...state, newYorkWeatherData: action.payload };
+    case "KYIV_WEATHER_DATA":
+      return { ...state, kyivWeatherData: action.payload };
+    case "TORONTO_WEATHER_DATA":
+      return { ...state, torontoWeatherData: action.payload };
+    case "IP_WEATHER_DATA":
+      return { ...state, ipWeatherData: action.payload };
     default:
       return state;
   }

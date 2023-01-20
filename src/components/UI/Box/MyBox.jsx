@@ -1,9 +1,35 @@
 import React from "react";
-import cl from "./MyBox.module.css";
+import classes from "./MyBox.module.css";
 
-const MyBox = ({ children, ...props }) => {
+const MyBox = ({
+  londonBox,
+  newYorkBox,
+  kyivBox,
+  torontoBox,
+  ipBox,
+  children,
+  ...props
+}) => {
+  const rootClasses = [classes.MyBox];
+
+  if (londonBox) {
+    rootClasses.push(classes.londonBox);
+  }
+  if (newYorkBox) {
+    rootClasses.push(classes.newYorkBox);
+  }
+  if (kyivBox) {
+    rootClasses.push(classes.kyivBox);
+  }
+  if (torontoBox) {
+    rootClasses.push(classes.torontoBox);
+  }
+  if (ipBox) {
+    rootClasses.push(classes.ipBox);
+  }
+
   return (
-    <div {...props} className={cl.MyBox}>
+    <div {...props} className={rootClasses.join(" ")}>
       {children}
     </div>
   );

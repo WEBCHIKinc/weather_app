@@ -5,10 +5,21 @@
   animation: slowAppearance 1s ease 0s 1 normal forwards;
 }
 
+.mainH1 {
+  font-size: 77px;
+  margin-left: 20px
+}
+
+.miniH1 {
+  font-size: 40px;
+  margin: 5px;
+}
+
 @keyframes slowAppearance {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }

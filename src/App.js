@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import "./App.css";
@@ -6,9 +6,20 @@ import DataBox from "./components/DataBox";
 import InputBox from "./components/InputBox";
 import MyErrorBox from "./components/UI/AlertBox/MyErrorBox";
 import MyDefaultBack from "./components/UI/DefaultBackground/MyDefaultBack";
+import LondonBox from "./components/LondonBox";
+import NewYorkBox from "./components/NewYorkBox";
+import KyivBox from "./components/KyivBox";
+import IpCityBox from "./components/IpCityBox";
+import { useActions } from "./hooks/useActions";
+import TorontoBox from "./components/TorontoBox";
 
 function App() {
   const { weatherData, isError } = useSelector((state) => state.weather);
+  const { getMainCitiesWeather } = useActions();
+
+  useEffect(() => {
+    getMainCitiesWeather();
+  }, []);
 
   return (
     <div className="App">
@@ -21,6 +32,11 @@ function App() {
       >
         <MyErrorBox />
       </CSSTransition>
+      <LondonBox />
+      <NewYorkBox />
+      <KyivBox />
+      <TorontoBox />
+      <IpCityBox />
       {weatherData ? <DataBox /> : <InputBox />}
     </div>
   );

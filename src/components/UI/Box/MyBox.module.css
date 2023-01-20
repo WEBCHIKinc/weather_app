@@ -3,12 +3,46 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  width: 38%;
-  height: 53%;
+  width: 550px;
+  height: 350px;
   background-color: rgba(87, 87, 87, 0.225);
   border-radius: 60px;
   flex-direction: column;
   animation: videoEnter 1s ease 0s 1 normal forwards;
+}
+
+.MyBox.londonBox {
+  top: 100px;
+  left: 10px;
+  width: 400px;
+  height: 170px;
+}
+
+.MyBox.newYorkBox {
+  bottom: 150px;
+  left: 10px;
+  width: 400px;
+  height: 170px;
+}
+
+.MyBox.kyivBox {
+  top: 100px;
+  right: 10px;
+  width: 400px;
+  height: 170px;
+}
+
+.MyBox.torontoBox {
+  bottom: 150px;
+  right: 10px;
+  width: 400px;
+  height: 170px;
+}
+
+.MyBox.ipBox {
+  bottom: 10px;
+  width: 400px;
+  height: 130px;
 }
 
 .MyBox:before {

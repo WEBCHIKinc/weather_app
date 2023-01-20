@@ -13,8 +13,8 @@ export default class WeatherService {
         }
       );
       return response;
-    } catch {
-      console.log("Wrong city name");
+    } catch (error) {
+      console.log(error.message);
     }
   }
 
@@ -30,8 +30,17 @@ export default class WeatherService {
         }
       );
       return response;
-    } catch {
-      console.log("Wrong city name");
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  static async getWeatherWithIp() {
+    try {
+      const response = await axios.get("https://ipapi.co/json/");
+      return response;
+    } catch (error) {
+      console.log(error.message);
     }
   }
 }
