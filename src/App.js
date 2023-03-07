@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import "./App.css";
@@ -12,10 +12,12 @@ import KyivBox from "./components/KyivBox";
 import IpCityBox from "./components/IpCityBox";
 import { useActions } from "./hooks/useActions";
 import TorontoBox from "./components/TorontoBox";
+import MyButton from "./components/UI/Button/MyButton";
 
 function App() {
   const { weatherData, isError } = useSelector((state) => state.weather);
   const { getMainCitiesWeather } = useActions();
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
     getMainCitiesWeather();
@@ -23,7 +25,8 @@ function App() {
 
   return (
     <div className="App">
-      <MyDefaultBack />
+      <MyDefaultBack theme={"light"} />
+      <MyButton themeChanger> {theme}</MyButton>
       <CSSTransition
         in={isError}
         classNames={"alert"}
