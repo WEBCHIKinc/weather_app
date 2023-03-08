@@ -12,6 +12,14 @@
   z-index: 0;
 }
 
+.button.themeChanger {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #111111af;
+  width: 100px;
+}
+
 .button.onInfo {
   position: absolute;
   right: 30px;
@@ -22,6 +30,7 @@
   position: absolute;
   left: 30px;
   top: 39px;
+  
 }
 
 .button.current {

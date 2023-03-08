@@ -1,10 +1,10 @@
 import axios from "axios";
 
 export default class WeatherService {
-  static async getWeatherByName(cityName) {
+  static async getWeatherByName(cityName, type = "weather") {
     try {
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}`,
+        `https://api.openweathermap.org/data/2.5/${type}?q=${cityName}`,
         {
           params: {
             units: "metric",
@@ -19,20 +19,7 @@ export default class WeatherService {
   }
 
   static async getWeatherForecastByName(cityName) {
-    try {
-      const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}`,
-        {
-          params: {
-            units: "metric",
-            appid: "d91a703a0a98bfa02281b20354b6c152",
-          },
-        }
-      );
-      return response;
-    } catch (error) {
-      console.log(error.message);
-    }
+    return this.getWeatherByName(cityName, "forecast");
   }
 
   static async getWeatherWithIp() {
