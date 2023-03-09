@@ -23,10 +23,14 @@ function App() {
     getMainCitiesWeather();
   }, []);
 
+  const handleThemeChange = () => (theme === "light" ? setTheme("dark") : setTheme("light"));
+
   return (
     <div className="App">
       <MyDefaultBack theme={"light"} />
-      <MyButton themeChanger> {theme}</MyButton>
+      <MyButton themeChanger onClick={handleThemeChange}>
+        {theme}
+      </MyButton>
       <CSSTransition
         in={isError}
         classNames={"alert"}
