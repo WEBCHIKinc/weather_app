@@ -1,4 +1,5 @@
-import {OpenWeatherMap, IpApi } from "../../../API/WeatherService";
+import { OpenweathermapService } from "../../../API/OpenweathermapService";
+import { IpService } from "../../../API/IpService";
 
 const CHANGE_CITY_NAME = "CHANGE_CITY_NAME";
 const CHANGE_WEATHER_DATA = "CHANGE_WEATHER_DATA";
@@ -70,7 +71,7 @@ export const WeatherActionCreators = {
   getWeather: (cityName) => async (dispatch) => {
     try {
       dispatch(WeatherActionCreators.changeisLoadingAction(true));
-      const response = await OpenWeatherMap.getWeatherByName(cityName);
+      const response = await OpenweathermapService.getWeatherByName(cityName);
       dispatch(WeatherActionCreators.changeWeatherDataAction(response.data));
       dispatch(
         WeatherActionCreators.changeWeatherDescriptionAction(
@@ -95,7 +96,9 @@ export const WeatherActionCreators = {
   getForecastWeather: (cityName) => async (dispatch) => {
     try {
       dispatch(WeatherActionCreators.changeisLoadingAction(true));
-      const response = await OpenWeatherMap.getWeatherForecastByName(cityName);
+      const response = await OpenweathermapService.getWeatherForecastByName(
+        cityName
+      );
       dispatch(
         WeatherActionCreators.changeWeatherForecastDataAction(response.data)
       );
@@ -112,14 +115,20 @@ export const WeatherActionCreators = {
   getMainCitiesWeather: () => async (dispatch) => {
     try {
       dispatch(WeatherActionCreators.changeisLoadingAction(true));
-      const response_london = await OpenWeatherMap.getWeatherByName("london");
-      const response_newYork = await OpenWeatherMap.getWeatherByName(
+      const response_london = await OpenweathermapService.getWeatherByName(
+        "london"
+      );
+      const response_newYork = await OpenweathermapService.getWeatherByName(
         "new york"
       );
-      const response_kyiv = await OpenWeatherMap.getWeatherByName("kyiv");
-      const response_toronto = await OpenWeatherMap.getWeatherByName("toronto");
-      const response_ip = await IpApi.getWeatherWithIp();
-      const response_ipWeater = await OpenWeatherMap.getWeatherByName(
+      const response_kyiv = await OpenweathermapService.getWeatherByName(
+        "kyiv"
+      );
+      const response_toronto = await OpenweathermapService.getWeatherByName(
+        "toronto"
+      );
+      const response_ip = await IpService.getWeatherWithIp();
+      const response_ipWeater = await OpenweathermapService.getWeatherByName(
         response_ip.data.city
       );
       dispatch(
