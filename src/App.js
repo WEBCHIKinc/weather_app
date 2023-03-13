@@ -25,7 +25,8 @@ function App() {
 
   const handleThemeChange = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
-    localStorage.setItem('Theme', theme)
+    console.log(theme);
+    localStorage.setItem("Theme", theme === "dark" ? 'light' : 'dark');
   }
   return (
     <div className="App">
