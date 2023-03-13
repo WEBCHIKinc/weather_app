@@ -17,15 +17,16 @@ import MyButton from "./components/UI/Button/MyButton";
 function App() {
   const { weatherData, isError } = useSelector((state) => state.weather);
   const { getMainCitiesWeather } = useActions();
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem("Theme") || "dark");
 
   useEffect(() => {
     getMainCitiesWeather();
   }, []);
 
-  const handleThemeChange = () =>
+  const handleThemeChange = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
-
+    localStorage.setItem('Theme', theme)
+  }
   return (
     <div className="App">
       {theme === "light" ? (
