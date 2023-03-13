@@ -84,3 +84,31 @@ body {
     opacity: 0;
   }
 }
+
+.background-enter-active {
+  animation: exit 1s ease 0s 1 normal forwards;
+}
+
+.background-exit-active {
+  animation: exit 1s ease 0s 1 normal forwards;
+}
+
+@keyframes background-exit {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes background-enter {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

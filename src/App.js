@@ -23,11 +23,16 @@ function App() {
     getMainCitiesWeather();
   }, []);
 
-  const handleThemeChange = () => (theme === "light" ? setTheme("dark") : setTheme("light"));
+  const handleThemeChange = () =>
+    theme === "light" ? setTheme("dark") : setTheme("light");
 
   return (
     <div className="App">
-      <MyDefaultBack theme={"light"} />
+      {theme === "light" ? (
+        <MyDefaultBack theme={"light"} />
+      ) : (
+        <MyDefaultBack theme={"dark"} />
+      )}
       <MyButton themeChanger onClick={handleThemeChange}>
         {theme}
       </MyButton>
