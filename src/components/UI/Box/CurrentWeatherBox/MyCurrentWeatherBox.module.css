@@ -5,12 +5,12 @@
   animation: slowAppearance 1s ease 0s 1 normal forwards;
 }
 
-.mainH1 {
+.mainHeader {
   font-size: 77px;
-  margin-left: 20px
+  margin-left: 20px;
 }
 
-.miniH1 {
+.miniHeader {
   font-size: 40px;
   margin: 5px;
 }

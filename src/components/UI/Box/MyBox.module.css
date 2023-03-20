@@ -11,43 +11,36 @@
   animation: videoEnter 1s ease 0s 1 normal forwards;
 }
 
-.MyBox.londonBox {
+.minibox {
+  width: 400px;
+  height: 170px;
+  cursor: pointer;
+}
+
+.londonBox {
   top: 100px;
   left: 10px;
-  width: 400px;
-  height: 170px;
-  cursor: pointer;
 }
 
-.MyBox.newYorkBox {
+.newYorkBox {
   bottom: 150px;
   left: 10px;
-  width: 400px;
-  height: 170px;
-  cursor: pointer;
 }
 
-.MyBox.kyivBox {
+.kyivBox {
   top: 100px;
   right: 10px;
-  width: 400px;
-  height: 170px;
-  cursor: pointer;
 }
 
-.MyBox.torontoBox {
+.torontoBox {
   bottom: 150px;
   right: 10px;
-  width: 400px;
-  height: 170px;
-  cursor: pointer;
 }
 
-.MyBox.ipBox {
+.ipBox {
   bottom: 20px;
   width: 400px;
   height: 130px;
-  cursor: pointer;
 }
 
 .MyBox:before {

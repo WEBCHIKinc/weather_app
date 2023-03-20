@@ -13,19 +13,19 @@ const MyBox = ({
   const rootClasses = [classes.MyBox];
 
   if (londonBox) {
-    rootClasses.push(classes.londonBox);
+    rootClasses.push(classes.minibox, classes.londonBox);
   }
   if (newYorkBox) {
-    rootClasses.push(classes.newYorkBox);
+    rootClasses.push(classes.minibox, classes.newYorkBox);
   }
   if (kyivBox) {
-    rootClasses.push(classes.kyivBox);
+    rootClasses.push(classes.minibox, classes.kyivBox);
   }
   if (torontoBox) {
-    rootClasses.push(classes.torontoBox);
+    rootClasses.push(classes.minibox, classes.torontoBox);
   }
   if (ipBox) {
-    rootClasses.push(classes.ipBox);
+    rootClasses.push(classes.minibox, classes.ipBox);
   }
 
   return (

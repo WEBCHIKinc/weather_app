@@ -39,7 +39,7 @@ const DataBox = () => {
   return (
     <MyBox>
       <div className="cityNameBox">
-        <h1 style={{ fontSize: 50 }}>{weatherCityName}</h1>
+        <h1 className="font-size40">{weatherCityName}</h1>
       </div>
 
       {current === "daily" ? (
