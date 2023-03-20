@@ -18,55 +18,55 @@ const IP_WEATHER_DATA = "IP_WEATHER_DATA";
 export const WeatherActionCreators = {
   changeCityNameAction: (payload) => ({
     type: CHANGE_CITY_NAME,
-    payload: payload,
+    payload,
   }),
   changeWeatherDataAction: (payload) => ({
     type: CHANGE_WEATHER_DATA,
-    payload: payload,
+    payload,
   }),
   changeWeatherForecastDataAction: (payload) => ({
     type: CHANGE_WEATHER_FORECAST_DATA,
-    payload: payload,
+    payload,
   }),
   changeisLoadingAction: (payload) => ({
     type: IS_LOADING,
-    payload: payload,
+    payload,
   }),
   changeIsErrorAction: (payload) => ({
     type: IS_ERROR,
-    payload: payload,
+    payload,
   }),
   changeWeatherDescriptionAction: (payload) => ({
     type: WEATHER_DESCRIPTION,
-    payload: payload,
+    payload,
   }),
   changeWeatherCityNameAction: (payload) => ({
     type: WEATHER_CITY_NAME,
-    payload: payload,
+    payload,
   }),
   changeWeatherCityTempAction: (payload) => ({
     type: WEATHER_CITY_TEMP,
-    payload: payload,
+    payload,
   }),
   changeLondonWeatherDataAction: (payload) => ({
     type: LONDON_WEATHER_DATA,
-    payload: payload,
+    payload,
   }),
   changeNewYorkWeatherDataAction: (payload) => ({
     type: NEW_YORK_WEATHER_DATA,
-    payload: payload,
+    payload,
   }),
   changeKyivWeatherDataAction: (payload) => ({
     type: KYIV_WEATHER_DATA,
-    payload: payload,
+    payload,
   }),
   changeTorontoWeatherDataAction: (payload) => ({
     type: TORONTO_WEATHER_DATA,
-    payload: payload,
+    payload,
   }),
   changeIpWeatherDataAction: (payload) => ({
     type: IP_WEATHER_DATA,
-    payload: payload,
+    payload,
   }),
   getWeather: (cityName) => async (dispatch) => {
     try {
