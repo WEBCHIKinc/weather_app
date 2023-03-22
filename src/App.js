@@ -14,29 +14,31 @@ import { useActions } from "./hooks/useActions";
 import TorontoBox from "./components/TorontoBox";
 import MyButton from "./components/UI/Button/MyButton";
 
+const DARK_THEME = "dark";
+const LIGHT_THEME = "light";
+
 function App() {
   const { weatherData, isError } = useSelector((state) => state.weather);
   const { getMainCitiesWeather } = useActions();
-  const [theme, setTheme] = useState(localStorage.getItem("Theme") || "dark");
+  const [currentTheme, setTheme] = useState(
+    localStorage.getItem("Theme") || DARK_THEME
+  );
 
   useEffect(() => {
     getMainCitiesWeather();
   }, []);
 
-  const handleThemeChange = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-    console.log(theme);
-    localStorage.setItem("Theme", theme === "dark" ? "light" : "dark");
+  const handleThemeChange = (event) => {
+    const theme = event.target.textContent;
+    setTheme(theme);
+    localStorage.setItem("Theme", theme);
   };
+
   return (
     <div className="App">
-      {theme === "light" ? (
-        <MyDefaultBack theme={"light"} />
-      ) : (
-        <MyDefaultBack theme={"dark"} />
-      )}
+      <MyDefaultBack theme={currentTheme} />
       <MyButton themeChanger onClick={handleThemeChange}>
-        {theme}
+        {currentTheme === DARK_THEME ? LIGHT_THEME : DARK_THEME}
       </MyButton>
       <CSSTransition
         in={isError}
