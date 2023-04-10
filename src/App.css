@@ -3,9 +3,22 @@
   padding: 0;
 }
 
+*:focus {
+  outline: none;
+}
+
+* {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
 body {
   font-family: "Rubik Distressed", cursive;
   color: rgb(235, 235, 235);
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 .App {
@@ -14,6 +27,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.city-name {
+  font-size: 40px;
+}
+
+.city-name-box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 30px;
+}
+
+.dark-mode {
+  color: rgb(0, 0, 0);
 }
 
 .button-test {
@@ -65,5 +94,33 @@ body {
 
   100% {
     opacity: 0;
+  }
+}
+
+.background-enter-active {
+  animation: exit 1s ease 0s 1 normal forwards;
+}
+
+.background-exit-active {
+  animation: exit 1s ease 0s 1 normal forwards;
+}
+
+@keyframes background-exit {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes background-enter {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

@@ -1,7 +1,6 @@
 .button {
   position: relative;
   font-size: 23px;
-  border: 3px solid #ffffffaf;
   border-radius: 100px 30px 100px 30px;
   width: 22%;
   cursor: pointer;
@@ -11,6 +10,14 @@
   box-sizing: border-box;
   font-family: "Rubik Distressed", cursive;
   z-index: 0;
+}
+
+.button.themeChanger {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #111111af;
+  width: 100px;
 }
 
 .button.onInfo {
@@ -23,6 +30,7 @@
   position: absolute;
   left: 30px;
   top: 39px;
+  
 }
 
 .button.current {

@@ -10,9 +10,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 5px solid rgba(128, 128, 128, 0.382);
+  /* border: 3px solid rgba(247, 247, 247, 0.393); */
   border-radius: 30px;
   animation: slowAppearance 1s ease 0s 1 normal forwards;
+  
+border-width: 3px;
+  border-style: solid;
+  border-image: 
+    linear-gradient(
+      to bottom, 
+      rgba(57, 57, 57, 0.799), 
+      rgba(255, 255, 255, 0.242)
+    ) 1 100%;
 }
 
 @keyframes slowAppearance {
